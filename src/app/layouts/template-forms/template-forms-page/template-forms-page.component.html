@@ -1,0 +1,253 @@
+<mat-card class="form-container">
+  <form
+    #form="ngForm"
+    (reset)="onReset($event)"
+    (ngSubmit)="onSubmitForm($event)"
+    autocomplete="off"
+  >
+    <mat-card-title>Registration Form</mat-card-title>
+    <mat-divider></mat-divider>
+
+    <!-- First Name -->
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="userInfo.firstName"
+        required
+        minlength="2"
+        appBanWords="test"
+        #firstName="ngModel"
+        name="first-name"
+        placeholder="Enter your name"
+      />
+      <mat-error *ngIf="firstName.hasError('required')"
+        >This field is required</mat-error
+      >
+      <mat-error *ngIf="firstName.hasError('minlength')"
+        >Minimum
+        {{
+          firstName.getError("minlength").requiredLength
+        }}
+        characters</mat-error
+      >
+      <mat-error *ngIf="firstName.hasError('appBanWords')"
+        >Word "{{ firstName.getError("appBanWords").bannedWord }}" is not
+        allowed</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Last Name -->
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="userInfo.lastName"
+        required
+        minlength="2"
+        #lastName="ngModel"
+        name="last-name"
+        placeholder="Enter your last name"
+      />
+      <mat-error *ngIf="lastName.hasError('required')"
+        >This field is required</mat-error
+      >
+      <mat-error *ngIf="lastName.hasError('minlength')"
+        >Minimum
+        {{
+          lastName.getError("minlength").requiredLength
+        }}
+        characters</mat-error
+      >
+    </mat-form-field>
+
+    <!-- username -->
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        [(ngModel)]="userInfo.username"
+        [ngModelOptions]="{ updateOn: 'blur' }"
+        required
+        minlength="3"
+         pattern="[\w.]+"
+        [appBanWords]="isAdult ? ['test', 'test_test', 'dummy'] : []"
+        appUniqueUsername
+        name="username"
+        #username="ngModel"
+        placeholder="Enter a username"
+      />
+      <mat-hint *ngIf="username.pending">Checking availability...</mat-hint>
+      <mat-error *ngIf="username.hasError('required')"
+        >This field is required</mat-error
+      >
+      <mat-error *ngIf="username.hasError('minlength')"
+        >Minimum
+        {{
+          username.getError("minlength").requiredLength
+        }}
+        characters</mat-error
+      >
+      <mat-error *ngIf="username.hasError('pattern')"
+        >Only letters, numbers, _ and . are allowed</mat-error
+      >
+      <mat-error *ngIf="username.hasError('appBanWords')"
+        >Value "{{ username.getError("appBanWords").bannedWord }}" is not
+        allowed</mat-error
+      >
+      <mat-error *ngIf="username.hasError('appUniqueUsername')"
+        >This username is already taken</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [(ngModel)]="userInfo.email"
+        email
+        required
+        #email="ngModel"
+        name="email"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <mat-error *ngIf="email.hasError('required')"
+        >This field is required</mat-error
+      >
+      <mat-error *ngIf="email.hasError('email')">Enter a valid email</mat-error>
+    </mat-form-field>
+
+    <!-- Year of Birth and national -->
+    <div class="inline-group">
+      <mat-form-field appearance="fill" class="inline-field">
+        <mat-label>Year of Birth</mat-label>
+        <mat-select
+          [(ngModel)]="userInfo.yearOfBirth"
+          name="year-of-birth"
+          required
+          #yearOfBirth="ngModel"
+        >
+          <mat-option *ngFor="let year of years" [value]="year">{{
+            year
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="yearOfBirth.hasError('required')">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="inline-field">
+        <mat-label>national Number</mat-label>
+        <input
+          matInput
+          [(ngModel)]="userInfo.nationalCode"
+          pattern="^[A-Z]{2}[0-9]{6}$"
+          [required]="isAdult"
+          #nationalCode="ngModel"
+          name="nationalCode"
+          placeholder="AA123456"
+        />
+        <mat-error *ngIf="nationalCode.hasError('pattern')"
+          >Invalid format (HH123456)</mat-error
+        >
+        <mat-error *ngIf="nationalCode.hasError('required')"
+          >Required for adults</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <!-- Address -->
+    <mat-divider class="section-divider"></mat-divider>
+    <h3>Address</h3>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Full Address</mat-label>
+      <input
+        matInput
+        [(ngModel)]="userInfo.fullAdress"
+        required
+        #fullAdress="ngModel"
+        name="full-address"
+        placeholder="Street, house no."
+      />
+      <mat-error *ngIf="fullAdress.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input
+        matInput
+        [(ngModel)]="userInfo.city"
+        required
+        #city="ngModel"
+        name="city"
+      />
+      <mat-error *ngIf="city.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Post Code</mat-label>
+      <input
+        matInput
+        [(ngModel)]="userInfo.postCode"
+        required
+        #postCode="ngModel"
+        name="post-code"
+        type="number"
+      />
+      <mat-error *ngIf="postCode.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+    <!-- Passwords -->
+    <mat-divider class="section-divider"></mat-divider>
+    <h3>Password</h3>
+    <div ngModelGroup="password" appPasswordShouldMatch>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [(ngModel)]="userInfo.password"
+          required
+          minlength="6"
+          #password="ngModel"
+          name="password"
+          type="password"
+        />
+        <mat-error *ngIf="password.hasError('required')">Required</mat-error>
+        <mat-error *ngIf="password.hasError('minlength')"
+          >Minimum
+          {{
+            password.getError("minlength").requiredLength
+          }}
+          characters</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          [(ngModel)]="userInfo.confirmPassword"
+          #confirmPassword="ngModel"
+          name="confirm-password"
+          type="password"
+        />
+        <mat-error *ngIf="confirmPassword.hasError('appPasswordShouldMatch')"
+          >Passwords do not match</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <!-- Buttons -->
+    <div class="action-buttons">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid || form.pending"
+      >
+        Save
+      </button>
+      <button mat-button type="reset">Reset</button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,25 @@
+.form-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.inline-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.inline-field {
+  flex: 1 1 48%;
+}
+
+.section-divider {
+  margin: 2rem 0 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
