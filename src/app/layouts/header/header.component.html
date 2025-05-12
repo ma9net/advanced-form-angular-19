@@ -1,0 +1,35 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <div class="header-content">
+    <div class="logo-section">
+      <button mat-icon-button aria-label="Menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="app-title">My Advanced form Angular</span>
+    </div>
+
+    <nav class="nav-links">
+      <a
+        mat-button
+        routerLink="/"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Template-Driven Forms</a
+      >
+      <a mat-button routerLink="/reactive-forms" routerLinkActive="active-link"
+        >Reactive Forms</a
+      >
+      <a
+        mat-button
+        routerLink="/custom-rating-picker"
+        routerLinkActive="active-link"
+        >Custom Rating Picker</a
+      >
+      <a mat-button routerLink="/custom-select" routerLinkActive="active-link"
+        >Custom Select</a
+      >
+      <a mat-button routerLink="/dynamic-forms" routerLinkActive="active-link"
+        >Dynamic Forms</a
+      >
+    </nav>
+  </div>
+</mat-toolbar>
