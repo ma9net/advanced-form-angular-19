@@ -26,9 +26,7 @@
       >
       <mat-error *ngIf="firstName.hasError('minlength')"
         >Minimum
-        {{
-          firstName.getError("minlength").requiredLength
-        }}
+        {{ firstName.getError("minlength").requiredLength }}
         characters</mat-error
       >
       <mat-error *ngIf="firstName.hasError('appBanWords')"
@@ -54,9 +52,7 @@
       >
       <mat-error *ngIf="lastName.hasError('minlength')"
         >Minimum
-        {{
-          lastName.getError("minlength").requiredLength
-        }}
+        {{ lastName.getError("minlength").requiredLength }}
         characters</mat-error
       >
     </mat-form-field>
@@ -70,7 +66,7 @@
         [ngModelOptions]="{ updateOn: 'blur' }"
         required
         minlength="3"
-         pattern="[\w.]+"
+        pattern="[\w.]+"
         [appBanWords]="isAdult ? ['test', 'test_test', 'dummy'] : []"
         appUniqueUsername
         name="username"
@@ -83,9 +79,7 @@
       >
       <mat-error *ngIf="username.hasError('minlength')"
         >Minimum
-        {{
-          username.getError("minlength").requiredLength
-        }}
+        {{ username.getError("minlength").requiredLength }}
         characters</mat-error
       >
       <mat-error *ngIf="username.hasError('pattern')"
@@ -216,9 +210,7 @@
         <mat-error *ngIf="password.hasError('required')">Required</mat-error>
         <mat-error *ngIf="password.hasError('minlength')"
           >Minimum
-          {{
-            password.getError("minlength").requiredLength
-          }}
+          {{ password.getError("minlength").requiredLength }}
           characters</mat-error
         >
       </mat-form-field>

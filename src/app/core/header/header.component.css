@@ -1,4 +1,4 @@
-.header-toolbar {
+:host .header-toolbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,35 +7,35 @@
   height: 64px;
 }
 
-.header-content {
+:host .header-content {
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo-section {
+:host .logo-section {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.app-title {
+:host .app-title {
   font-size: 1.25rem;
   font-weight: 500;
 }
 
-.nav-links {
+:host .nav-links {
   display: flex;
   gap: 8px;
 }
 
-.active-link {
+:host .active-link {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
 
-.user-section {
+:host .user-section {
   display: flex;
   gap: 8px;
 }

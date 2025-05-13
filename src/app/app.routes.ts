@@ -1,12 +1,21 @@
-
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-{
+  {
     path: '',
-    title: 'Template-Driven Forms Playground',
-    loadComponent:
-      () => import('./layouts/template-forms/template-forms-page/template-forms-page.component')
-        .then(m => m.TemplateFormsPageComponent)
+    title: 'Template-Driven Forms',
+    loadComponent: () =>
+      import(
+        './layouts/template-forms/template-forms-page/template-forms-page.component'
+      ).then((m) => m.TemplateFormsPageComponent),
+  },
+
+  {
+    path: 'reactive-forms',
+    title: 'Reactive Forms',
+    loadComponent: () =>
+      import(
+        './layouts/reactive-forms/reactive-forms-page/reactive-forms-page.component'
+      ).then((m) => m.ReactiveFormsPageComponent),
   },
 ];
