@@ -18,4 +18,12 @@ export const routes: Routes = [
         './layouts/reactive-forms/reactive-forms-page/reactive-forms-page.component'
       ).then((m) => m.ReactiveFormsPageComponent),
   },
+  {
+    path: 'dynamic-forms',
+    title: 'dynamic Forms',
+    loadComponent: () =>
+      import(
+        './layouts/dynamic-forms/dynamic-forms/dynamic-forms.component'
+      ).then((m) => m.DynamicFormsComponent),
+  },
 ];
