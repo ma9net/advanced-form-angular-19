@@ -118,16 +118,16 @@ ng generate	    Generate components, services, etc.
 
  Add backend integration for saving form data
 
- Deploy to Firebase / Vercel / Netlify
-
-🧪 Testing Strategy
-Unit tests for pipes, services, and components
-
 Form validation tests
 
 Route guard and role-based access tests
 
 Integration tests with TestBed
+
+screenshots:
+![Screenshot 2025-05-17 at 20-06-21 Template-Driven Forms](https://github.com/user-attachments/assets/00632718-6186-4865-97be-3c18e798f233)
+![Screenshot 2025-05-17 at 20-06-52 Reactive Forms](https://github.com/user-attachments/assets/b5ddbb68-9c18-40f0-bca1-73796b405d15)
+
 
 🤝 Contributions
 Feel free to fork the project and submit PRs. For ideas or bugs, please create an issue.
